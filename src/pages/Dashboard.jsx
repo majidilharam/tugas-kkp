@@ -1,0 +1,30 @@
+import { Bell, MessageCircle, User } from "lucide-react"
+import Notif from "../components/Notif"
+
+const Dashboard = () => {
+
+    return (
+        <div className="bg-gray-100 rounded-4xl w-full flex justify-between">
+        <div className="flex flex-col gap-2 p-4">
+          <div className="flex gap-3 ">
+            <Notif icon={User} />
+            <div className="flex flex-col gap-2">
+              <span>Muhammad Nur Majid</span>
+              <a href="">muhammadnurmajid160@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div className="p-2">
+          <div className="p-4 flex gap-2">
+            <Notif icon={MessageCircle} />
+            <Notif icon={Bell} />
+          </div>
+        </div>
+      </div>
+
+    )
+}
+
+
+
+      export default Dashboard
