@@ -4,7 +4,7 @@ import Menu from "./Menu"
 const SideBar = () => {
   return (
     <div className="flex gap-3 items-start">
-      <div className="rounded-4xl bg-gray-100 flex flex-col gap-12 h-screen p-8">
+      <div className="rounded-4xl bg-gray-100 flex flex-col gap-12 h-full p-8">
         <div className="flex gap-4 items-center">
           <div><img className="rounded-xl" src="/logo-ykk.webp" width={40} height={40} /></div>
           <h1>PT.YKK AP INDONESIA</h1>

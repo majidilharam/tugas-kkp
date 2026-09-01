@@ -6,7 +6,7 @@ import OvertimeHistory from "./pages/OvertimeHistory"
 
 const App = () => {
   return (
-    <div className="flex items-start gap-4 p-4 min-h-screen">
+    <div className="flex gap-4 p-4 h-screen w-full overflow-hidden ">
       <Sidebar />
 
       
