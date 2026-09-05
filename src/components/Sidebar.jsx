@@ -12,7 +12,7 @@ const SideBar = () => {
 
         <div className="flex flex-col gap-4">
           <p className="mb-2 text-2xl">Menu</p>
-          {/* Tambahkan prop 'to' sesuai route target */}
+        
           <Menu title="Dashboard" icon={<LayoutDashboard />} to="/dashboard" />
           <Menu title="Leave Request" icon={<NotebookPen />} to="/leave-request" />
           <Menu title="Overtime History" icon={<RotateCcwClock />} to="/overtime" />
