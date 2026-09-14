@@ -16,9 +16,6 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/leave-request" element={<LeaveRequest />} />
           <Route path="/overtime" element={<OvertimeHistory/>}/>
-          <Route index element= {<p>concert</p>}/>
-          <Route path= ":city" element={<span>jakarta</span>}/>
-          <Route path= "jakarta" element={<span>persija</span>}/>
         </Routes>
       </div>
     </div>

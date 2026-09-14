@@ -1,9 +1,13 @@
 import { Bell, Calendar, CalendarClock, MessageCircle, User, RotateCwSquare,  RotateCcwClock } from "lucide-react"
 import Notif from "../components/Notif"
 import Card from "../components/Card"
-import Button from "../components/Button"
 
 const Dashboard = () => {
+const jamLembur = 16
+const maxLembur = 40
+
+const presentaseLembur = Math.round((jamLembur / maxLembur )* 100)
+
   return (
     <div className="flex flex-col h-full">
       <div className="bg-gray-100 rounded-4xl w-full flex justify-between items-center p-4">
@@ -38,14 +42,42 @@ const Dashboard = () => {
           <Card title="Cuti Pending" remaining="0" icon={RotateCwSquare}/>
           <Card title="Lembur Menunggu Approval" remaining="0" icon={RotateCcwClock}/>
         </div>
+
+
+  
         
-        <div className="flex flex-col gap-3 mt-8" >
-          <Button variant= "primary">primary</Button>
-          <Button variant= "secondary">secondary</Button>
-          <Button variant= "tertiary">tertiary</Button>
-        
+        <div className="w-full rounded-lg bg-white mt-6 p-4">
+          <div className="flex items-start justify-between mb-4">
+          <div>
+          <h3 className="text-xl">Presentase Lembur Bulanan</h3>
+          <p className="text-gray-400" >Dihitung daru batas maksimal 40 jam per bulan</p>
+          </div>
+          <input className="rounded-lg bg-gray-200 p-2 outline-none" type="date" name="" id="" />
+          
+
+          
         </div>
+        <div className="text-xl font-extrabold text-gray-900 mb-3">
+                {presentaseLembur}
+          </div>
+
+          <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 ">
+         <div className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-in-out
+         " style={{width:`${presentaseLembur}`}}>
+
+         </div>
+          </div>
+          <p className="mt-2 text-xs text-gray-500">
+            {jamLembur}.0 dari {maxLembur} jam terpakai
+          </p>
+      
       </div>
+      </div>
+
+
+
+
+      
     </div>
   )
 }
