@@ -3,10 +3,11 @@ import Notif from "../components/Notif"
 import Card from "../components/Card"
 
 const Dashboard = () => {
-const jamLembur = 16
+const jamLembur = 20
 const maxLembur = 40
 
-const presentaseLembur = Math.round((jamLembur / maxLembur )* 100)
+const presentaseLembur =  jamLembur / maxLembur * 100
+
 
   return (
     <div className="flex flex-col h-full">
@@ -27,7 +28,7 @@ const presentaseLembur = Math.round((jamLembur / maxLembur )* 100)
         </div>
       </div>
 
-      <div className="bg-gray-100 rounded-4xl mt-8 p-6 flex-1 flex flex-col">
+      <div className="bg-gray-100 rounded-4xl mt-4 p-6 flex-1 flex flex-col">
         <div className="flex flex-col gap-2">
           <h1 className="text-4xl">Dashboard Karyawan</h1>
           <p className="text-gray-500 text-2xl">
@@ -35,7 +36,7 @@ const presentaseLembur = Math.round((jamLembur / maxLembur )* 100)
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-6 items-stretch mt-8">
+        <div className="flex flex-wrap gap-6 items-stretch mt-6">
           <Card title="Sisa Cuti Tahunan" remaining="12" total="/ 12 hari" icon={Calendar} />
           <Card title="Sisa Cuti Besar" remaining="20" total="/ 20 hari" icon={Calendar} />
           <Card title="Total Jam Lembur" remaining="16" total="Jam" icon={CalendarClock} />
@@ -50,20 +51,20 @@ const presentaseLembur = Math.round((jamLembur / maxLembur )* 100)
           <div className="flex items-start justify-between mb-4">
           <div>
           <h3 className="text-xl">Presentase Lembur Bulanan</h3>
-          <p className="text-gray-400" >Dihitung daru batas maksimal 40 jam per bulan</p>
+          <p className="text-gray-400" >Dihitung dari batas maksimal 40 jam per bulan</p>
           </div>
           <input className="rounded-lg bg-gray-200 p-2 outline-none" type="date" name="" id="" />
           
 
           
         </div>
-        <div className="text-xl font-extrabold text-gray-900 mb-3">
-                {presentaseLembur}
+        <div className="text-4xl font-extrabold text-gray-900 mb-3">
+                {presentaseLembur + "%"}
           </div>
 
           <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 ">
          <div className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-in-out
-         " style={{width:`${presentaseLembur}`}}>
+         " style={{width:`${presentaseLembur }%`}}>
 
          </div>
           </div>
@@ -82,4 +83,4 @@ const presentaseLembur = Math.round((jamLembur / maxLembur )* 100)
   )
 }
 
-export default Dashboard
+export default Dashboard 
