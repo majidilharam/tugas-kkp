@@ -1,12 +1,32 @@
-import { Bell, Calendar, CalendarClock, MessageCircle, User, RotateCwSquare,  RotateCcwClock } from "lucide-react"
+import { Bell, Calendar, CalendarClock, MessageCircle, User, RotateCwSquare, RotateCcwClock } from "lucide-react"
 import Notif from "../components/Notif"
 import Card from "../components/Card"
 
 const Dashboard = () => {
-const jamLembur = 20
-const maxLembur = 40
+  const jamLembur = 20
+  const maxLembur = 40
 
-const presentaseLembur =  jamLembur / maxLembur * 100
+  const presentaseLembur = jamLembur / maxLembur * 100
+
+  const riwayat = [
+    {
+      jenis: "Cuti Tahunan", tanggal: "12 Sep 2026", status: "Disetujui"
+    },
+    {
+      jenis: "Cuti Besar", tanggal: "16 Sep 2026", status: "Pending"
+    },
+    {
+      jenis: "Lembur", tanggal: "12 Sep 2026", status: "Disetujui"
+    },
+    {
+      jenis: "Lembur", tanggal: "14 Sep 2026", status: "Disetujui"
+    },
+    {
+      jenis: "Cuti Tahunan", tanggal: "15 Sep 2026", status: "Disetujui"
+    },
+  ]
+
+
 
 
   return (
@@ -39,46 +59,68 @@ const presentaseLembur =  jamLembur / maxLembur * 100
         <div className="flex flex-wrap gap-6 items-stretch mt-6">
           <Card title="Sisa Cuti Tahunan" remaining="12" total="/ 12 hari" icon={Calendar} />
           <Card title="Sisa Cuti Besar" remaining="20" total="/ 20 hari" icon={Calendar} />
-          <Card title="Total Jam Lembur" remaining="16" total="Jam" icon={CalendarClock} />
-          <Card title="Cuti Pending" remaining="0" icon={RotateCwSquare}/>
-          <Card title="Lembur Menunggu Approval" remaining="0" icon={RotateCcwClock}/>
+          <Card title="Total Jam Lembur" remaining={jamLembur} total="Jam" icon={CalendarClock} />
+          <Card title="Cuti Pending" remaining="0" icon={RotateCwSquare} />
+          <Card title="Lembur Menunggu Approval" remaining="0" icon={RotateCcwClock} />
         </div>
 
 
-  
-        
+
+
         <div className="w-full rounded-lg bg-white mt-6 p-4">
           <div className="flex items-start justify-between mb-4">
-          <div>
-          <h3 className="text-xl">Presentase Lembur Bulanan</h3>
-          <p className="text-gray-400" >Dihitung dari batas maksimal 40 jam per bulan</p>
-          </div>
-          <input className="rounded-lg bg-gray-200 p-2 outline-none" type="date" name="" id="" />
-          
+            <div>
+              <h3 className="text-xl">Presentase Lembur Bulanan</h3>
+              <p className="text-gray-400" >Dihitung dari batas maksimal 40 jam per bulan</p>
+            </div>
+            <input className="rounded-lg bg-gray-200 p-2 outline-none" type="date" name="" id="" />
 
-          
-        </div>
-        <div className="text-4xl font-extrabold text-gray-900 mb-3">
-                {presentaseLembur + "%"}
+
+
+          </div>
+          <div className="text-4xl font-extrabold text-gray-900 mb-3">
+            {presentaseLembur + "%"}
           </div>
 
           <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 ">
-         <div className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-in-out
-         " style={{width:`${presentaseLembur }%`}}>
+            <div className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-in-out
+         " style={{ width: `${presentaseLembur}%` }}>
 
-         </div>
+            </div>
           </div>
           <p className="mt-2 text-xs text-gray-500">
             {jamLembur}.0 dari {maxLembur} jam terpakai
           </p>
-      
+        </div>
+
+        <div className="w-full rounded-lg bg-white mt-6 p-4 flex flex-col gap-4">
+          <div>
+            <h3 className="text-xl">Riwayat cuti dan lembur terbaru</h3>
+          </div>
+
+          <div className="rounded-lg p-2 flex flex-col gap-4 bg-gray-100">
+            <div className="flex justify-between border-b border-gray-400 pb-4 ">
+              <p className="flex-1 text-center">Jenis</p>
+              <p className="flex-1 text-center">Tanggal </p>
+              <p className="flex-1 text-center">Status</p>
+            </div>
+
+            <div>
+              {riwayat.map((item, index) => (
+                <div key={index} className=" flex flex-col border mt-2 rounded-lg p-2">
+                  <div className="flex justify-between">
+                    <p className="flex-1 text-center">{item.jenis}</p>
+                    <p className="flex-1 text-center">{item.tanggal}</p>
+                    <p className="flex-1 text-center">{item.status}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+
       </div>
-      </div>
-
-
-
-
-      
     </div>
   )
 }

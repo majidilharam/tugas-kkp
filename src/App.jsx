@@ -10,7 +10,7 @@ const App = () => {
       <Sidebar />
 
       
-      <div className="flex-1 w-full">
+      <div className="flex-1 w-full overflow-y-auto">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
