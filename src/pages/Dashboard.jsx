@@ -2,8 +2,7 @@ import { Bell,MessageCircle, User} from "lucide-react"
 import Notif from "../components/Notif"
 import Card from "../components/Card"
 import Cells from "../components/Cells"
-import riwayat from "../data/dataDummy"
-import header from "../data/header"
+import {riwayat, notify}from "../data/dataDummy"
 import  { jamLembur, maxLembur, presentaseLembur } from "../utils/lembur"
 import dataDummy_card from "../data/dataDummy_card"
 
@@ -98,18 +97,21 @@ const Dashboard = () => {
           </div>
 
           <div className="rounded-lg p-2 flex flex-col gap-4 bg-gray-100">
-            <div className="flex justify-between border-b border-gray-400 pb-4 ">
-              {header.map((label) => 
-              <Cells key={label}>{label}</Cells>)}
+            <div className="flex justify-between bg-blue-500  shadow-lg rounded-lg  p-2 ">
+              {notify.map((label) => 
+              <Cells  key={label} variant="default">{label}</Cells>)}
             </div>
 
             <div>
               {riwayat.map((item, index) => (
-                <div key={index} className=" flex flex-col border mt-2 rounded-lg p-2">
+                <div key={index} className=" flex flex-col border-b mt-2 p-2">
                   <div className="flex justify-between">
-                   {Object.values(item).map((value, i) =>  
-                  <Cells key={i}>{value}</Cells>
-                  )}
+                   <Cells >{item.jenis}</Cells>
+                   <Cells>{item.tanggal}</Cells>
+                   <Cells variant={
+                       item.status === "Disetujui" ? "succes"
+                     : item.status === "Pending" ? "pending" 
+                     : "warning" }>{item.status}</Cells>
                   </div>
                 </div>
               ))}
