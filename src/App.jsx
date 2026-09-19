@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard"
 import Sidebar from "./components/Sidebar"
 import LeaveRequest from "./pages/LeaveRequest"
 import OvertimeHistory from "./pages/OvertimeHistory"
+import LeaveRequestHistory from "./pages/LeaveRequestHistory"
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/leave-request" element={<LeaveRequest />} />
           <Route path="/overtime" element={<OvertimeHistory/>}/>
+          <Route path="/leave-history" element={<LeaveRequestHistory/>}/>
         </Routes>
       </div>
     </div>

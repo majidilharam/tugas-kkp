@@ -1,15 +1,21 @@
-import { Bell,MessageCircle, User} from "lucide-react"
+import { Bell, MessageCircle, User } from "lucide-react"
 import Notif from "../components/Notif"
 import Card from "../components/Card"
 import Cells from "../components/Cells"
-import {riwayat, notify}from "../data/dataDummy"
-import  { jamLembur, maxLembur, presentaseLembur } from "../utils/lembur"
+import { riwayat, notify } from "../data/dataDummy"
+import { jamLembur, maxLembur, presentaseLembur } from "../utils/lembur"
 import dataDummy_card from "../data/dataDummy_card"
+import Badge from "../components/Badge"
+import { statusHeader, daftarKaryawan } from "../data/dataDummy_employees"
+import Header from "../components/Header"
+
+
+
 
 const Dashboard = () => {
-  
 
- 
+
+
 
 
 
@@ -28,7 +34,7 @@ const Dashboard = () => {
         </div>
 
 
-{/* Card info */}
+        {/* Card info */}
         <div className="flex gap-2">
           <Notif icon={MessageCircle} />
           <Notif icon={Bell} />
@@ -45,21 +51,21 @@ const Dashboard = () => {
 
         <div className="flex flex-wrap gap-6 items-stretch mt-6">
           {dataDummy_card.map((item, index) => (
-            <Card 
-            key={index}
-            title={item.title}
-            remaining={item.remaining}
-            total={item.total}
-            icon={item.icon}
+            <Card
+              key={index}
+              title={item.title}
+              remaining={item.remaining}
+              total={item.total}
+              icon={item.icon}
             />
           ))}
         </div>
-{/* Card info */}
+        {/* Card info */}
 
 
 
 
-     {/* Presentase lembur */}
+        {/* Presentase lembur */}
         <div className="w-full rounded-lg bg-white mt-6 p-4">
           <div className="flex items-start justify-between mb-4">
             <div>
@@ -90,35 +96,64 @@ const Dashboard = () => {
 
 
 
-       {/* log cuti */}
-        <div className="w-full rounded-lg bg-white mt-6 p-4 flex flex-col gap-4">
-          <div>
+        {/* log cuti */}
+        <div className="flex gap-2">
+          <div className="w-full rounded-lg bg-white mt-6 p-4 flex flex-col text-center gap-4">
+
             <h3 className="text-xl">Riwayat cuti dan lembur terbaru</h3>
-          </div>
 
-          <div className="rounded-lg p-2 flex flex-col gap-4 bg-gray-100">
-            <div className="flex justify-between bg-blue-500  shadow-lg rounded-lg  p-2 ">
-              {notify.map((label) => 
-              <Cells  key={label} variant="default">{label}</Cells>)}
-            </div>
+            <div className="rounded-lg p-2 flex flex-col gap-4 bg-gray-100">
+              <Header>{notify.map((label) =>
+                <Cells key={label} className="text-white">{label}</Cells>)}</Header>
 
-            <div>
-              {riwayat.map((item, index) => (
-                <div key={index} className=" flex flex-col border-b mt-2 p-2">
-                  <div className="flex justify-between">
-                   <Cells >{item.jenis}</Cells>
-                   <Cells>{item.tanggal}</Cells>
-                   <Cells variant={
-                       item.status === "Disetujui" ? "succes"
-                     : item.status === "Pending" ? "pending" 
-                     : "warning" }>{item.status}</Cells>
+
+
+              <div>
+                {riwayat.map((item, index) => (
+                  <div key={index} className=" flex flex-col border-b border-blue-500 mt-2 p-2">
+                    <div className="flex justify-between">
+                      <Cells>{item.jenis}</Cells>
+                      <Cells>{item.tanggal}</Cells>
+                      <Cells><Badge statusValue={item.status} /></Cells>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+          </div>
+          { /* log cuti */}
+
+          {/* daftar karyawan */}
+          <div className="w-full rounded-lg bg-white mt-6 p-4 text-center">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-xl">Daftar Karyawan TA tim B</h3>
+
+              <div className="w-full rounded-lg bg-gray-100 p-2">
+                <Header> {statusHeader.map((label) =>
+                    <Cells className="text-white" key={label}>{label}</Cells>
+                  )}</Header>
+                 
+                
+
+                {daftarKaryawan.map((item, index) => (
+                  <div key={index} className="flex flex-col">
+                    <div className="flex justify-between">
+                      <Cells>{item.nama}</Cells>
+                      <Cells>{item.departemen}</Cells>
+                      <Cells>{item.Status}</Cells>
+                      <Cells>{item.nomorInduk}</Cells>
+
+                    </div>
+                  </div>
+                ))}
+
+              </div>
             </div>
           </div>
         </div>
-    {/* log cuti */}
+
+        {/* daftar karyawan */}
+
 
       </div>
     </div>

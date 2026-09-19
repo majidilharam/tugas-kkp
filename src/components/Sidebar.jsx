@@ -1,4 +1,4 @@
-import { LayoutDashboard, LogOut, NotebookPen, RotateCcwClock, Settings } from "lucide-react"
+import { GalleryVertical, LayoutDashboard, LogOut, NotebookPen, RotateCcwClock, Settings } from "lucide-react"
 import Menu from "./Menu"
 
 const SideBar = () => {
@@ -16,6 +16,7 @@ const SideBar = () => {
           <Menu title="Dashboard" icon={<LayoutDashboard />} to="/dashboard" />
           <Menu title="Leave Request" icon={<NotebookPen />} to="/leave-request" />
           <Menu title="Overtime History" icon={<RotateCcwClock />} to="/overtime" />
+          <Menu title="Leave Request History" icon={<GalleryVertical/>} to="leave-history"/>
         </div>
 
         <div className="flex flex-col gap-4">
