@@ -1,13 +1,14 @@
 import { Bell, MessageCircle, User } from "lucide-react"
-import Notif from "../components/Notif"
-import Card from "../components/Card"
-import Cells from "../components/Cells"
-import { riwayat, notify } from "../data/dataDummy"
-import { jamLembur, maxLembur, presentaseLembur } from "../utils/lembur"
-import dataDummy_card from "../data/dataDummy_card"
-import Badge from "../components/Badge"
-import { statusHeader, daftarKaryawan } from "../data/dataDummy_employees"
-import Header from "../components/Header"
+import Notif from "../../components/Notif"
+import Card from "../../components/Card"
+import Cells from "./Cells"
+import { riwayat, notify } from "../../data/dataDummy"
+import { jamLembur, maxLembur, presentaseLembur } from "../../utils/lembur"
+import dataDummy_card from "../../data/dataDummy_card"
+import Badge from "../../components/Badge"
+import { statusHeader, daftarKaryawan } from "../../data/dataDummy_employees"
+import Header from "./Header"
+
 
 
 
@@ -134,18 +135,19 @@ const Dashboard = () => {
                   )}</Header>
                  
                 
-
+               <div className=" max-h-70 overflow-y-auto">
                 {daftarKaryawan.map((item, index) => (
                   <div key={index} className="flex flex-col">
-                    <div className="flex justify-between">
-                      <Cells>{item.nama}</Cells>
+                    <div className="flex justify-between rounded-4xl bg-blue-300 p-2 mt-2 ">
+                      <Cells >{item.nama}</Cells>
                       <Cells>{item.departemen}</Cells>
-                      <Cells>{item.Status}</Cells>
+                      <Cells><Badge statusValue={item.status}/></Cells>
                       <Cells>{item.nomorInduk}</Cells>
 
                     </div>
                   </div>
                 ))}
+                </div>
 
               </div>
             </div>

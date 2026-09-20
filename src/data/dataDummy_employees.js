@@ -4,77 +4,77 @@ export const daftarKaryawan = [
     {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Cuti",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Lembur",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Cuti",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Hadir",
         nomorInduk: 260515
         
     },
      {
         nama: "Muhammad Nur Majid",
         departemen:"Nexta", 
-        Status: "Hadir",
+        status: "Lembur",
         nomorInduk: 260515
         
     },

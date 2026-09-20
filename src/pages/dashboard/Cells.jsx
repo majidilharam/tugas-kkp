@@ -7,7 +7,7 @@ const Cells = ({ children, className=""}) => {
 
 
     return (
-        <p className={`flex-1 text-center ${className}`}>{children}</p>
+        <p className={`flex-1 gap-4 text-center text-sm ${className}`}>{children}</p>
     )
 }
 

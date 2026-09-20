@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
-import Dashboard from "./pages/Dashboard"
+import Dashboard from "./pages/dashboard/Dashboard"
 import Sidebar from "./components/Sidebar"
-import LeaveRequest from "./pages/LeaveRequest"
+import LeaveRequestPage from "./pages/leaverequest/LeaveRequestPage"
 import OvertimeHistory from "./pages/OvertimeHistory"
 import LeaveRequestHistory from "./pages/LeaveRequestHistory"
 
@@ -15,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/leave-request" element={<LeaveRequest />} />
+          <Route path="/leave-request" element={<LeaveRequestPage/>} />
           <Route path="/overtime" element={<OvertimeHistory/>}/>
           <Route path="/leave-history" element={<LeaveRequestHistory/>}/>
         </Routes>
