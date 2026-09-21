@@ -43,11 +43,11 @@ return (
             {/*  Jenis Cuti */}
             <div className="flex gap-3 items-start">
                 <div className="bg-blue-100 p-2 rounded-lg">
-                    <Calendar className="text-blue-500" size={20} />
+                    <Calendar className="text-old-blue" size={20} />
                 </div>
                 <div className="flex-1">
                     <p className="text-xs text-gray-400">Jenis Cuti</p>
-                    <select className="w-full outline-none font-medium resize-none  appearance-none text-gray-400"
+                    <select className="w-full outline-none font-medium  appearance-none text-gray-400"
                     name="jenisCuti"
                     value={formCuti.jenisCuti}
                     onChange={handleChange}
@@ -63,7 +63,7 @@ return (
             {/*  Alasan */}
             <div className="flex gap-3 items-start">
                 <div className="bg-blue-100 p-2 rounded-lg">
-                    <Pencil className="text-blue-500" size={20} />
+                    <Pencil className="text-old-blue" size={20} />
                 </div>
                 <div className="flex-1">
                     <p className="text-xs text-gray-400">Alasan</p>
@@ -81,7 +81,7 @@ return (
             {/*  Dari Tanggal */}
             <div className="flex gap-3 items-start">
                 <div className="bg-blue-100 p-2 rounded-lg">
-                    <ArrowRight className="text-blue-500" size={20} />
+                    <ArrowRight className="text-old-blue" size={20} />
                 </div>
                 <div className="flex-1">
                     <p className="text-xs text-gray-400">Dari</p>
@@ -97,7 +97,7 @@ return (
             {/* Sampai Tanggal */}
             <div className="flex gap-3 items-start">
                 <div className="bg-blue-100 p-2 rounded-lg">
-                    <ArrowRight className="text-blue-500" size={20} />
+                    <ArrowRight className="text-old-blue" size={20} />
                 </div>
                 <div className="flex-1">
                     <p className="text-xs text-gray-400">Sampai</p>
@@ -110,7 +110,7 @@ return (
             </div>
 
             {/* Tombol submit */}
-            <button onClick={handleSubmit} className="w-full cursor-pointer bg-blue-500 text-white rounded-lg p-3 mt-2 font-medium hover:bg-blue-950">
+            <button onClick={handleSubmit} className="w-full cursor-pointer bg-old-blue text-white rounded-lg p-3 mt-2 font-medium hover:bg-blue-950">
                 Ajukan Cuti
             </button>
 

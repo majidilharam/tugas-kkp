@@ -22,6 +22,9 @@ const PageAjukanCuti = () => {
       <h1 className="text-2xl font-bold mb-3">Ajukan Cuti</h1>
       <LeaveRequestForm  onAdd={addOnCuti}/>
       <div className="bg-white mt-4 p-2 rounded-lg">
+        <div className="">
+          <h1 className="text-2xl text-center">Belum ada riwayat cuti</h1>
+        </div>
         <div className="flex flex-col gap-4">
           {logLeave.map((item, index) =>
             <div key={index} className="flex flex-col border mt-4 p-2 rounded-4xl">

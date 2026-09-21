@@ -83,7 +83,7 @@ const Dashboard = () => {
           </div>
 
           <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 ">
-            <div className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-in-out
+            <div className="h-full bg-old-blue rounded-full transition-all duration-500 ease-in-out
          " style={{ width: `${presentaseLembur}%` }}>
 
             </div>
@@ -111,7 +111,7 @@ const Dashboard = () => {
 
               <div>
                 {riwayat.map((item, index) => (
-                  <div key={index} className=" flex flex-col border-b border-blue-500 mt-2 p-2">
+                  <div key={index} className=" flex flex-col border-b border-old-blue mt-2 p-2">
                     <div className="flex justify-between">
                       <Cells>{item.jenis}</Cells>
                       <Cells>{item.tanggal}</Cells>
@@ -135,10 +135,10 @@ const Dashboard = () => {
                   )}</Header>
                  
                 
-               <div className=" max-h-70 overflow-y-auto">
+               <div className=" max-h-70 overflow-y-auto scrollbar-none">
                 {daftarKaryawan.map((item, index) => (
                   <div key={index} className="flex flex-col">
-                    <div className="flex justify-between rounded-4xl bg-blue-300 p-2 mt-2 ">
+                    <div className="flex justify-between rounded-4xl bg-blue-ice-dark p-2 mt-4  ">
                       <Cells >{item.nama}</Cells>
                       <Cells>{item.departemen}</Cells>
                       <Cells><Badge statusValue={item.status}/></Cells>

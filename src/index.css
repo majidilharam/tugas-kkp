@@ -1,5 +1,51 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@theme {
+  /* ===== Brand Colors ===== */
+  --color-old-blue: #2C4A6E;       /* biru tua: header, tombol utama, teks penting */
+  --color-old-blue-dark: #1B324F;  /* hover/active state */
+  --color-old-blue-light: #4A6C93; /* elemen sekunder */
+
+  --color-blue-ice: #EAF4FB;       /* biru sangat muda: background section/card */
+  --color-blue-ice-dark: #DCEEFA;  /* hover di atas blue ice */
+
+  /* ===== Warna Netral ===== */
+  --color-bg: #F5F7FA;
+  --color-text-primary: #1B2733;
+  --color-text-secondary: #6B7280;
+  --color-border: #E2E8F0;
+
+  /* ===== Warna Status (dipakai untuk Badge) ===== */
+  --color-success: #22C55E;
+  --color-success-bg: #DCFCE7;
+  --color-warning: #EAB308;
+  --color-warning-bg: #FEF9C3;
+  --color-danger: #EF4444;
+  --color-danger-bg: #FEE2E2;
+
+  /* ===== Font ===== */
+  --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+:root {
+  /* ===== Radius & Shadow ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-card: 0 2px 10px rgba(44, 74, 110, 0.08);
+}
 
 body {
-    background-color: white;
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
 }
