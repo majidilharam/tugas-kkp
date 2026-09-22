@@ -1,13 +1,13 @@
 import { Bell, MessageCircle, User } from "lucide-react"
 import Notif from "../../components/Notif"
 import Card from "../../components/Card"
-import Cells from "./Cells"
+import Cells from "../../components/Cells"
 import { riwayat, notify } from "../../data/dataDummy"
 import { jamLembur, maxLembur, presentaseLembur } from "../../utils/lembur"
 import dataDummy_card from "../../data/dataDummy_card"
 import Badge from "../../components/Badge"
 import { statusHeader, daftarKaryawan } from "../../data/dataDummy_employees"
-import Header from "./Header"
+import Header from "../../components/Header"
 
 
 

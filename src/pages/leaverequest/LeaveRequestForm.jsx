@@ -8,7 +8,7 @@ const AjukanCuti = ({
 }) => {
 
   const [formCuti, setFormCuti] = useState({
-    jenisCuti: 'Cuti Tahunan',
+    jenisCuti: '',
     alasanCuti: '',
     tanggalMulai: '',
     tanggalSelesai: ''
@@ -24,13 +24,33 @@ const AjukanCuti = ({
   };
 
   
+
+  
   
   const handleSubmit = (e) => {
     e.preventDefault(); 
+    if (
+    !formCuti.jenisCuti ||
+    !formCuti.alasanCuti ||
+    !formCuti.tanggalMulai ||
+    !formCuti.tanggalSelesai
+  ) {
+    alert('Mohon lengkapi semua field terlebih dahulu.')
+    return   
+  }
+
+  setFormCuti({
+    jenisCuti: 'Cuti Tahunan',
+    tanggalMulai: '',
+    tanggalSelesai: '',
+    alasan: ''
+  });
+  
     console.log('Data Cuti yang Diajukan:', formCuti);
     alert('Permohonan cuti berhasil dikirim!');
     onAdd({...formCuti, id: Date.now()})
   }
+
 
 
 return (

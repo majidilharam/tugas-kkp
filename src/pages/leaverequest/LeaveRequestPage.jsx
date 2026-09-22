@@ -1,10 +1,12 @@
 
 
+import Cells from "../../components/Cells";
+import Header from "../../components/Header";
 import LeaveRequestForm from "../leaverequest/LeaveRequestForm"
 import { useState } from "react";
 
 
-  
+
 const PageAjukanCuti = () => {
 
   const [logLeave, setLogLeave] = useState([]);
@@ -13,25 +15,32 @@ const PageAjukanCuti = () => {
     setLogLeave((prev) => {
       return [...prev, cuti];
     });
+
+
   };
- 
+
+  const headerCuti = ["Jenis Cuti", "Alasan Cuti", "Tanggal Cuti", "Status"]
+
+
 
   return (
     <div className="min-h-screen bg-gray-100 rounded-4xl flex flex-col p-6">
       {/* Header */}
       <h1 className="text-2xl font-bold mb-3">Ajukan Cuti</h1>
-      <LeaveRequestForm  onAdd={addOnCuti}/>
+      <LeaveRequestForm onAdd={addOnCuti} />
       <div className="bg-white mt-4 p-2 rounded-lg">
-        <div className="">
-          <h1 className="text-2xl text-center">Belum ada riwayat cuti</h1>
-        </div>
+        <Header>
+          {headerCuti.map((label) =>
+            <Cells className="text-white" key={label}>{label}</Cells>
+          )}
+        </Header>
         <div className="flex flex-col gap-4">
           {logLeave.map((item, index) =>
-            <div key={index} className="flex flex-col border mt-4 p-2 rounded-4xl">
-              <span className="">{item.jenisCuti}</span>
-              <span>{item.alasanCuti}</span>
-              <span>{item.tanggalMulai}</span>
-              <span>{item.tanggalSelesai}</span>
+            <div key={index} className="flex justify-between border mt-4 p-2 rounded-4xl">
+              <Cells>{item.jenisCuti}</Cells>
+              <Cells>{item.alasanCuti}</Cells>
+              <Cells>{item.tanggalMulai}</Cells>
+              <Cells>{item.tanggalSelesai}</Cells>
             </div>
           )}
         </div>
