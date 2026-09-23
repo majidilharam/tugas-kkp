@@ -26,7 +26,7 @@ const PageAjukanCuti = () => {
   return (
     <div className="min-h-screen bg-gray-100 rounded-4xl flex flex-col p-6">
       {/* Header */}
-      <h1 className="text-2xl font-bold mb-3">Ajukan Cuti</h1>
+      
       <LeaveRequestForm onAdd={addOnCuti} />
       <div className="bg-white mt-4 p-2 rounded-lg">
         <Header>
