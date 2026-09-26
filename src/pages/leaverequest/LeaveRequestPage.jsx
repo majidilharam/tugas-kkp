@@ -5,11 +5,10 @@ import Header from "../../components/Header";
 import LeaveRequestForm from "../leaverequest/LeaveRequestForm"
 import { useState } from "react";
 
-
-
 const PageAjukanCuti = () => {
 
   const [logLeave, setLogLeave] = useState([]);
+  console.log(logLeave)
 
   const addOnCuti = (cuti) => {
     setLogLeave((prev) => {
@@ -19,7 +18,7 @@ const PageAjukanCuti = () => {
 
   };
 
-  const headerCuti = ["Jenis Cuti", "Alasan Cuti", "Tanggal Cuti", "Status"]
+  const headerCuti = ["Jenis Cuti", "Alasan Cuti", "Tanggal Cuti","Tangal Selesai", "Status"]
 
 
 
@@ -41,6 +40,7 @@ const PageAjukanCuti = () => {
               <Cells>{item.alasanCuti}</Cells>
               <Cells>{item.tanggalMulai}</Cells>
               <Cells>{item.tanggalSelesai}</Cells>
+              <Cells>{item.status}</Cells>
             </div>
           )}
         </div>

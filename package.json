@@ -10,15 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@internationalized/date": "^3.12.4",
+    "@react-stately/utils": "^3.12.1",
     "@tailwindcss/vite": "^4.3.3",
+    "@untitledui/icons": "^0.0.22",
     "clsx": "^2.1.1",
     "lucide-react": "^1.37.0",
     "react": "^19.2.8",
+    "react-aria": "^3.52.1",
+    "react-aria-components": "^1.21.1",
     "react-datepicker": "^9.1.0",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3",
     "tailwind": "^4.0.0",
-    "tailwind-merge": "^3.6.0",
+    "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
