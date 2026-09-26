@@ -1,8 +1,8 @@
 
 
 import Cells from "../../components/Cells";
-import Header from "../../components/Header";
-import LeaveRequestForm from "./leaveform/LeaveRequestForm"
+import Header from "@/components/Header";
+import LeaveRequestForm from "./modal/LeaveRequestForm"
 import { useState } from "react";
 
 const PageAjukanCuti = () => {
@@ -18,7 +18,7 @@ const PageAjukanCuti = () => {
 
   };
 
-  const headerCuti = ["Jenis Cuti", "Alasan Cuti", "Tanggal Cuti","Tangal Selesai", "Status"]
+  const headerCuti = ["Jenis Cuti", "Alasan Cuti", "Tanggal Cuti","Tanggal Selesai", "Status"]
 
 
 

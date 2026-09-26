@@ -7,7 +7,8 @@ import { jamLembur, maxLembur, presentaseLembur } from "../../utils/lembur"
 import dataDummy_card from "../../data/dataDummy_card"
 import Badge from "../../components/Badge"
 import { statusHeader, daftarKaryawan } from "../../data/dataDummy_employees"
-import Header from "../../components/Header"
+import Header from "@/components/Header"
+import  Calendar from "@/components/Calendar"
 
 
 
@@ -73,7 +74,7 @@ const Dashboard = () => {
               <h3 className="text-xl">Presentase Lembur Bulanan</h3>
               <p className="text-gray-400" >Dihitung dari batas maksimal 40 jam per bulan</p>
             </div>
-            <input className="rounded-lg bg-gray-200 p-2 outline-none" type="date" name="" id="" />
+            <Calendar />
 
 
 

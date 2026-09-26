@@ -1,21 +1,32 @@
 
 
 import {DateField, DateRangePicker, Label, RangeCalendar} from "@heroui/react";
+import { useState } from "react";
 
-const Calendar = ({onChange= ()=> {} }) => {
+const Calendar = ({onChange= ()=> {}, label = "" } ) => {
+
+  const [dateValue, setdateValue] = useState() 
 
   
   const onChangeDate = (value) => {
-  const newDate = {startDate: value.start.toString(), endDate:value.end.toString()}
+    setdateValue(value)
+console.log(value)
+  onChange(value)
 
-  onChange(newDate)
+  
 
       
     }
 
   return (
-    <DateRangePicker className="w-80" endName="endDate" startName="startDate" onChange={onChangeDate}>
-      <Label>Trip dates</Label>
+    <DateRangePicker className="w-80" endName="endDate" startName="startDate" 
+    onChange={onChangeDate}
+    value={dateValue}>
+      <Label>{label}</Label>
+      <button  onClick={() => setdateValue({
+    "start": "2026-09-01",
+    "end": "2026-09-20"
+})}>Test</button>
       <DateField.Group fullWidth>
         <DateField.Input slot="start">
           {(segment) => <DateField.Segment segment={segment} />}

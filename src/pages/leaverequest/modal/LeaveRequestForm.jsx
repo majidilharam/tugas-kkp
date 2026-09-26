@@ -1,4 +1,4 @@
-import Calendar  from "./Calendar";
+import Calendar  from "../../../components/Calendar";
 import { Calendar as CalendarIcon, Pencil } from "lucide-react";
 import { useState } from "react";
 
@@ -25,11 +25,13 @@ const AjukanCuti = ({ onAdd = () => {} }) => {
   };
 
   const handleChangeDate = (date)=> {
+    const {startDate, endDate } = date
     setFormCuti((prev) => ({
-      ...prev, 
-      tanggalMulai: date.startDate, tanggalSelesai: date.endDate
+      ...prev, tanggalMulai: startDate, tanggalSelesai: endDate
+
+      
     }))
-      console.log(date)
+
 
    }
 
@@ -107,9 +109,9 @@ const AjukanCuti = ({ onAdd = () => {} }) => {
         {/* Tanggal Mulai */}
         <div className="flex gap-3.5 items-center min-w-0">
           <div className="flex-1 min-w-0">
-            <p className="text-xs text-gray-400 font-medium mb-1">Dari</p>
             <Calendar
                 onChange={handleChangeDate}
+                label="Atur Tanggal Cuti"
             />
           </div>
         </div>
