@@ -2,7 +2,7 @@
 
 import Cells from "../../components/Cells";
 import Header from "../../components/Header";
-import LeaveRequestForm from "../leaverequest/LeaveRequestForm"
+import LeaveRequestForm from "./leaveform/LeaveRequestForm"
 import { useState } from "react";
 
 const PageAjukanCuti = () => {
