@@ -96,7 +96,7 @@ const Dashboard = () => {
         {/* Presentase lembur */}
 
         {/* log cuti */}
-        <div className="flex gap-2">
+        <div className="flex gap-6">
           <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
             <h3 className="text-xl pl-10 font-bold">Riwayat cuti dan lembur terbaru</h3>
             <HistoryTable/>

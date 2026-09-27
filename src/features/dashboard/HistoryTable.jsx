@@ -35,7 +35,7 @@ const HistoryTable = () => {
             <div className="rounded-lg">
                 <table className="w-full border-collapse">
                     <thead>
-                        <tr className="border-b">
+                        <tr className="border-b border-gray-200">
                             {historyHeader.map((label, i) => (
                                 <th
                                     key={label}
@@ -49,7 +49,7 @@ const HistoryTable = () => {
 
                     <tbody>
                         {History.map(({ jenis, tanggal, status }, index) => (
-                            <tr key={index} className="border-b">
+                            <tr key={index} className="border-b border-gray-200 ">
                                 <td className="pl-10 py-4 ">{jenis}</td>
                                 <td className="px-2 py-4 ">{tanggal}</td>
                                 <Badge color={statusColor[status]}><td className="px-2 py-4 capitalize ">{status}</td></Badge>
