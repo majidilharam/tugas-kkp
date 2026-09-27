@@ -1,3 +1,4 @@
+import Badge from "@/components/Badge"
 import cn from "@/utils/cn"
 
 const HistoryTable = () => {
@@ -6,21 +7,28 @@ const HistoryTable = () => {
 
     const History = [
         {
-            jenis: "Cuti Tahunan", tanggal: "12 Sep 2026", status: "Disetujui"
+            jenis: "Cuti Tahunan", tanggal: "12 Sep 2026", status: "disetujui"
         },
         {
-            jenis: "Cuti Besar", tanggal: "16 Sep 2026", status: "Pending"
+            jenis: "Cuti Besar", tanggal: "16 Sep 2026", status: "pending"
         },
         {
-            jenis: "Lembur", tanggal: "12 Sep 2026", status: "Ditolak"
+            jenis: "Cuti Tahunan", tanggal: "17 Sep 2026", status: "ditolak"
         },
         {
-            jenis: "Lembur", tanggal: "14 Sep 2026", status: "Disetujui"
+            jenis: "Cuti Besar", tanggal: "29 Sep 2026", status: "disetujui"
         },
         {
-            jenis: "Cuti Tahunan", tanggal: "15 Sep 2026", status: "Disetujui"
+            jenis: "Cuti Tahunan", tanggal: "25 Okt 2026", status: "disetujui"
         },
     ]
+
+    const statusColor = 
+    {
+        disetujui: "green", 
+        ditolak: "red", 
+        pending: "yellow"
+    }
 
     return (
         <div>
@@ -44,7 +52,7 @@ const HistoryTable = () => {
                             <tr key={index} className="border-b">
                                 <td className="pl-10 py-4 ">{jenis}</td>
                                 <td className="px-2 py-4 ">{tanggal}</td>
-                                <td className="px-2 py-4 ">{status}</td>
+                                <Badge color={statusColor[status]}><td className="px-2 py-4 capitalize ">{status}</td></Badge>
                             </tr>
                         ))}
                     </tbody>
