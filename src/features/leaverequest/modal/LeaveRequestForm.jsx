@@ -1,4 +1,4 @@
-import Calendar from "../../../components/Calendar";
+import Calendar from "@/components/Calendar";
 import { Calendar as CalendarIcon, Pencil } from "lucide-react";
 import { useState } from "react";
 
@@ -13,7 +13,7 @@ const inisialFormState = {
 
 };
 
-const AjukanCuti = ({ onAdd = () => { } }) => {
+const LeaveRequestForm = ({ onAdd = () => { } }) => {
   const [formCuti, setFormCuti] = useState(inisialFormState);
 
   const handleChange = (e) => {
@@ -128,4 +128,4 @@ const AjukanCuti = ({ onAdd = () => { } }) => {
   );
 };
 
-export default AjukanCuti;
+export default LeaveRequestForm
