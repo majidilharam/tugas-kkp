@@ -1,32 +1,17 @@
 import Badge from "@/components/Badge"
 import cn from "@/utils/cn"
 
-const HistoryTable = () => {
+const HistoryTable = ({children}) => {
 
     const historyHeader = ["Jenis", "Tanggal", "Status"]
 
-    const History = [
-        {
-            jenis: "Cuti Tahunan", tanggal: "12 Sep 2026", status: "disetujui"
-        },
-        {
-            jenis: "Cuti Besar", tanggal: "16 Sep 2026", status: "pending"
-        },
-        {
-            jenis: "Cuti Tahunan", tanggal: "17 Sep 2026", status: "ditolak"
-        },
-        {
-            jenis: "Cuti Besar", tanggal: "29 Sep 2026", status: "disetujui"
-        },
-        {
-            jenis: "Cuti Tahunan", tanggal: "25 Okt 2026", status: "disetujui"
-        },
-    ]
 
-    const statusColor = 
+
+
+    const statusColor =
     {
-        disetujui: "green", 
-        ditolak: "red", 
+        disetujui: "green",
+        ditolak: "red",
         pending: "yellow"
     }
 
@@ -44,11 +29,11 @@ const HistoryTable = () => {
                                     {label}
                                 </th>
                             ))}
-                        </tr> 
+                        </tr>
                     </thead>
 
                     <tbody>
-                        {History.map(({ jenis, tanggal, status }, index) => (
+                        {children.map(({ jenis, tanggal, status }, index) => (
                             <tr key={index} className="border-b border-gray-200 ">
                                 <td className="pl-10 py-4 ">{jenis}</td>
                                 <td className="px-2 py-4 ">{tanggal}</td>

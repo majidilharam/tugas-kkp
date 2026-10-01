@@ -19,7 +19,9 @@ import TableCell from "@/components/TableCell"
 import Badge from "@/components/Badge"
 import { daftarKaryawan, statusHeader } from "@/data/dataDummy_employees"
 import CardStatList from "./CardStatList"
-import HistoryTable from "./HistoryTable"
+import HistoryTable from "../../components/HistoryTable"
+import HistoryLeave from "@/data/dataDummyLeave"
+import HistoryOvertime from "@/data/dataDummyOvertime"
 
 
 
@@ -61,49 +63,70 @@ const Dashboard = () => {
             Akses cepat ke seluruh informasi dan kebutuhan kerja Anda dalam satu tempat.
           </p>
         </div>
-        <CardStatList/>
+        <CardStatList />
         {/* Card info */}
 
 
 
 
         {/* Presentase lembur */}
-        <div className="w-full rounded-lg shadow-xl bg-white mt-6 p-4">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl">Presentase Lembur Bulanan</h3>
-              <p className="text-gray-400" >Dihitung dari batas maksimal 40 jam per bulan</p>
+        <div className="flex gap-4">
+          <div className="w-full rounded-lg shadow-xl bg-white mt-6 p-4">
+            <div className="flex items-start justify-between mb-6">
+              <div>
+                <h3 className="text-xl font-semibold">Persentase Lembur Bulanan</h3>
+                <p className="text-gray-400 text-sm">Dihitung dari batas maksimal 40 jam per bulan</p>
+              </div>
+              <Calendar />
             </div>
-            <Calendar />
 
+            {/* Kontainer Utama Grafik Bulat */}
+            <div className="flex flex-col items-center justify-center p-2">
+              <div className="relative flex items-center justify-center w-40 h-40">
+                {/* Struktur SVG untuk Lingkaran */}
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                  {/* Lingkaran Background (Abu-abu) */}
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    className="stroke-gray-200"
+                    strokeWidth="8"
+                    fill="transparent"
+                  />
+                  {/* Lingkaran Progress (Warna Utama/Old-Blue) */}
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    className="stroke-old-blue transition-all duration-500 ease-in-out"
+                    strokeWidth="8"
+                    fill="transparent"
+                    strokeDasharray="251.2"
+                    strokeDashoffset={251.2 - (251.2 * Math.min(presentaseLembur, 100)) / 100}
+                    strokeLinecap="round"
+                  />
+                </svg>
 
-
-          </div>
-          <div className="text-4xl font-extrabold text-gray-900 mb-3">
-            {presentaseLembur + "%"}
-          </div>
-
-          <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 ">
-            <div className="h-full bg-old-blue rounded-full transition-all duration-500 ease-in-out
-         " style={{ width: `${presentaseLembur}%` }}>
+                {/* Angka Persentase di Tengah Lingkaran */}
+                <div className="absolute flex flex-col items-center justify-center text-center">
+                  <span className="text-3xl font-extrabold text-gray-900">
+                    {presentaseLembur}%
+                  </span>
+                  <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wider mt-0.5">
+                    Terpakai
+                  </span>
+                </div>
+              </div>
+              {/* Keterangan Jam di Bawah */}
+              <p className="mt-4 text-sm font-medium text-gray-600 bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
+                <span className="font-bold text-gray-900">{jamLembur}.0</span> dari{" "}
+                <span className="font-bold text-gray-900">{maxLembur} jam</span> terpakai
+              </p>
 
             </div>
           </div>
-          <p className="mt-2 text-xs text-gray-500">
-            {jamLembur}.0 dari {maxLembur} jam terpakai
-          </p>
-        </div>
-        {/* Presentase lembur */}
 
-        {/* log cuti */}
-        <div className="flex gap-6">
-          <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
-            <h3 className="text-xl pl-10 font-bold">Riwayat cuti dan lembur terbaru</h3>
-            <HistoryTable/>
-          </div>
-          { /* log cuti */}
-
-          {/* daftar karyawan */}
           <div className="w-full rounded-lg bg-white mt-6 p-4 text-center">
             <div className="flex flex-col gap-4">
               <h3 className="text-xl">Daftar Karyawan TA tim B</h3>
@@ -127,13 +150,27 @@ const Dashboard = () => {
                   </div>
                 ))}
                 </div>
-
               </div>
             </div>
           </div>
         </div>
 
-        {/* daftar karyawan */}
+        {/* log cuti */}
+        <div className="flex gap-6">
+          <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
+            <h3 className="text-xl pl-10 font-bold">Riwayat cuti terbaru</h3>
+            <HistoryTable children={HistoryLeave} />
+          </div>
+          <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
+            <h3 className="text-xl pl-10 font-bold">Riwayat lembur terbaru</h3>
+            <HistoryTable children={HistoryOvertime} />
+          </div>
+          
+
+
+        </div>
+
+
 
 
       </div>

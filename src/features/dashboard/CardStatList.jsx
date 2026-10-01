@@ -4,7 +4,8 @@ import CardStat from "./CardStat"
 
 const CardStatData = [
     {
-     label: "Cuti Tahunan", 
+     label: "Cuti Tahunan",
+     label_2: "CUti Besar",
      value: 8, 
      unit: "/ 8 hari",
      icon: Calendar
