@@ -1,7 +1,7 @@
 import Badge from "@/components/Badge"
 import cn from "@/utils/cn"
 
-const HistoryTable = ({children}) => {
+const HistoryTable = ({ data = []}) => {
 
     const historyHeader = ["Jenis", "Tanggal", "Status"]
 
@@ -33,11 +33,13 @@ const HistoryTable = ({children}) => {
                     </thead>
 
                     <tbody>
-                        {children.map(({ jenis, tanggal, status }, index) => (
+                        {data.map(({ jenis, tanggal, status }, index) => (
                             <tr key={index} className="border-b border-gray-200 ">
                                 <td className="pl-10 py-4 ">{jenis}</td>
                                 <td className="px-2 py-4 ">{tanggal}</td>
-                                <Badge color={statusColor[status]}><td className="px-2 py-4 capitalize ">{status}</td></Badge>
+                                <td className="px-2 py-4 capitalize ">
+                                    <Badge color={statusColor[status]}>{status}</Badge>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

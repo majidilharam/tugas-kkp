@@ -1,6 +1,6 @@
 
 
-    const HistoryLeave = [
+    const historyLeave = [
         {
             jenis: "Cuti Tahunan", tanggal: "12 Sep 2026", status: "disetujui"
         },
@@ -18,4 +18,4 @@
         },
     ]
 
-    export default HistoryLeave
+    export default historyLeave

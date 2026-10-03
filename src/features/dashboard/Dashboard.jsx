@@ -12,16 +12,19 @@
 
 import IconInfo from "@/components/IconInfo"
 import { Bell, MessageCircle, User } from "lucide-react"
-import { Calendar } from "@heroui/react"
 import { jamLembur, maxLembur, presentaseLembur } from "@/utils/lembur"
-import TableRowHeader from "@/components/TableRowHeader"
-import TableCell from "@/components/TableCell"
-import Badge from "@/components/Badge"
-import { daftarKaryawan, statusHeader } from "@/data/dataDummy_employees"
+// import TableRowHeader from "@/components/TableRowHeader"
+// import TableCell from "@/components/TableCell"
+// import Badge from "@/components/Badge"
+// import { daftarKaryawan, statusHeader } from "@/data/dataDummy_employees"
 import CardStatList from "./CardStatList"
-import HistoryTable from "../../components/HistoryTable"
-import HistoryLeave from "@/data/dataDummyLeave"
-import HistoryOvertime from "@/data/dataDummyOvertime"
+import HistoryTable from "./HistoryTable"
+
+import Calendar from "@/components/Calendar"
+import historyOvertime from "@/data/dataDummyOvertime"
+import historyLeave from "@/data/dataDummyLeave"
+import { daftarKaryawan } from "@/data/dataDummy_employees"
+import ListKaryawan from "./ListKaryawan"
 
 
 
@@ -79,13 +82,9 @@ const Dashboard = () => {
               </div>
               <Calendar />
             </div>
-
-            {/* Kontainer Utama Grafik Bulat */}
-            <div className="flex flex-col items-center justify-center p-2">
-              <div className="relative flex items-center justify-center w-40 h-40">
-                {/* Struktur SVG untuk Lingkaran */}
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  {/* Lingkaran Background (Abu-abu) */}
+            <div className="flex flex-col items-center justify-center border  p-2">
+              <div className="relative flex items-center justify-center  border" >
+                <svg className=" transform border w-40 h-40 -rotate-90" viewBox="0 0 100 100">
                   <circle
                     cx="50"
                     cy="50"
@@ -94,7 +93,7 @@ const Dashboard = () => {
                     strokeWidth="8"
                     fill="transparent"
                   />
-                  {/* Lingkaran Progress (Warna Utama/Old-Blue) */}
+
                   <circle
                     cx="50"
                     cy="50"
@@ -108,7 +107,6 @@ const Dashboard = () => {
                   />
                 </svg>
 
-                {/* Angka Persentase di Tengah Lingkaran */}
                 <div className="absolute flex flex-col items-center justify-center text-center">
                   <span className="text-3xl font-extrabold text-gray-900">
                     {presentaseLembur}%
@@ -119,21 +117,25 @@ const Dashboard = () => {
                 </div>
               </div>
               {/* Keterangan Jam di Bawah */}
-              <p className="mt-4 text-sm font-medium text-gray-600 bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
+              <p className="my-4 text-sm font-medium text-gray-600 bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
                 <span className="font-bold text-gray-900">{jamLembur}.0</span> dari{" "}
                 <span className="font-bold text-gray-900">{maxLembur} jam</span> terpakai
               </p>
-
             </div>
           </div>
 
-          <div className="w-full rounded-lg bg-white mt-6 p-4 text-center">
-            <div className="flex flex-col gap-4">
+          <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
+            <h3 className="text-xl pl-10 font-bold">Daftar Karyawan</h3>
+            <ListKaryawan data={daftarKaryawan} />
+          </div>
+
+          {/* <div className="w-full rounded-lg bg-white mt-6 p-4 text-center">
+            <div className="flex flex-col gap-4">s
               <h3 className="text-xl">Daftar Karyawan TA tim B</h3>
 
               <div className="w-full rounded-lg bg-gray-50 p-2">
                 <TableRowHeader> {statusHeader.map((label) =>
-                    <TableCell className="text-white" key={label}>{label}</TableCell>
+                    <TableCell className="text-black font-bold" key={label}>{label}</TableCell>
                   )}</TableRowHeader>
                  
                 
@@ -143,7 +145,9 @@ const Dashboard = () => {
                     <div className="flex justify-between rounded-4xl bg-blue-ice-dark p-2 mt-4  ">
                       <TableCell >{item.nama}</TableCell>
                       <TableCell>{item.departemen}</TableCell>
-                      <TableCell><Badge statusValue={item.status}/></TableCell>
+                      <TableCell>
+                        <Badge>{item.status}</Badge>
+                        </TableCell>
                       <TableCell>{item.nomorInduk}</TableCell>
 
                     </div>
@@ -152,20 +156,20 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* log cuti */}
         <div className="flex gap-6">
           <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
             <h3 className="text-xl pl-10 font-bold">Riwayat cuti terbaru</h3>
-            <HistoryTable children={HistoryLeave} />
+            <HistoryTable data={historyLeave} />
           </div>
           <div className="w-full rounded-lg bg-white mt-6 flex flex-col py-6 gap-6">
             <h3 className="text-xl pl-10 font-bold">Riwayat lembur terbaru</h3>
-            <HistoryTable children={HistoryOvertime} />
+            <HistoryTable data={historyOvertime} />
           </div>
-          
+
 
 
         </div>

@@ -1,5 +1,5 @@
 
-    const HistoryOvertime = [
+    const historyOvertime = [
         {
             jenis: "Lembur", tanggal: "12 Sep 2026", status: "disetujui"
         },
@@ -17,4 +17,4 @@
         },
     ]
 
-    export default HistoryOvertime
+    export default historyOvertime

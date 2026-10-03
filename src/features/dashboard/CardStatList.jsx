@@ -5,7 +5,6 @@ import CardStat from "./CardStat"
 const CardStatData = [
     {
      label: "Cuti Tahunan",
-     label_2: "CUti Besar",
      value: 8, 
      unit: "/ 8 hari",
      icon: Calendar
@@ -36,7 +35,7 @@ const CardStatData = [
 const CardStatList = () => {
 return (
 
-    <div className="flex justify-between mt-4">
+    <div className="flex gap-4 justify-between mt-4">
         {CardStatData.map((item, index) => (
          <CardStat key={index} {...item} />
         ))}
