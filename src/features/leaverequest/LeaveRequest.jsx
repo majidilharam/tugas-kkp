@@ -4,13 +4,41 @@ import { useState } from "react";
 import LeaveRequestForm from "./modal/LeaveRequestForm";
 import Badge from "@/components/Badge";
 import { CalendarDays } from "lucide-react";
+import Button from "@/components/Button";
+import Modal from "@/components/Modal";
 
 const LeaveRequest = () => {
   const [logLeave, setLogLeave] = useState([]);
+  const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [selectedLeaveId, setSelectedLeaveId] = useState(null)
+
+  const handleOpenModalDelete = (id) => {
+    setSelectedLeaveId(id)
+    setOpenModalDelete(true)
+    console.log(id)
+    
+  } 
+
+
+  const handleCloseModal = () => {
+    setOpenModalDelete(false)
+    setSelectedLeaveId(null)
+  }
+
+  const deleteLog = () => {
+    setLogLeave((prev) => 
+    prev.filter((item) => item.id !== selectedLeaveId)
+    )
+    handleCloseModal()
+
+  }
+
+
+  
 
   const addOnCuti = (cuti) => {
     setLogLeave((prev) => [...prev, cuti]);
-  };
+  }
 
   const headerCuti = [
     "Jenis Cuti",
@@ -18,6 +46,7 @@ const LeaveRequest = () => {
     "Tanggal Mulai",
     "Tanggal Selesai",
     "Status",
+    "Aksi"
   ];
 
   const formatTanggal = (tanggal) => {
@@ -127,6 +156,11 @@ const LeaveRequest = () => {
                         {item.status || "Menunggu"}
                       </Badge>
                     </td>
+                    <div className="flex gap-3 border p-4 ">
+                      <Button onClick={() => handleOpenModalDelete(item.id)} variant="secondary">Hapus</Button>
+                      <Button >Edit</Button>
+                    </div>
+
                   </tr>
                 ))
               ) : (
@@ -168,6 +202,14 @@ const LeaveRequest = () => {
           </p>
         </div>
       </div>
+
+      {openModalDelete && <Modal >Apakah data ini mau dihapus
+        <div className="flex gap-3">
+          <Button onClick={handleCloseModal} variant="primary">Batal</Button>
+          <Button onClick={deleteLog}  variant="secondary">Hapus</Button>
+        </div>
+      </Modal>}
+
     </div>
   );
 };

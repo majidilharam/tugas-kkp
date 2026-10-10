@@ -6,10 +6,12 @@ import Layout from "./layouts/main"
 import OvertimeHistoryPage from "./pages/overtimehistory/OvertimeHistoryPage"
 import DashboardPage from "./pages/dashboard/DashboardPage"
 import ReportMatrialPage from "./pages/reportmatrial/ReportMatrialPage"
+import { AuthProvider } from "./context/AuthContext"
 
 
 const App = () => {
   return (
+    <AuthProvider>
     <BrowserRouter>
 
         <Routes>
@@ -22,6 +24,7 @@ const App = () => {
           </Route>
         </Routes>
     </BrowserRouter>
+    </AuthProvider>
   )
 }
 

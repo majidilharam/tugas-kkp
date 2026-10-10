@@ -1,3 +1,4 @@
+
 import LeaveRequest from "@/features/leaverequest/LeaveRequest"
 
 const LeaveRequestPage  = () => {
@@ -5,7 +6,10 @@ const LeaveRequestPage  = () => {
 
 
   return (
+    <>
     <LeaveRequest/>
+   
+    </>
   )
 }
 

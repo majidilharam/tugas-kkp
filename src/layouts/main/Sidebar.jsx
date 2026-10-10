@@ -1,7 +1,12 @@
 import { GalleryVertical, LayoutDashboard, LogOut, NotebookPen, RotateCcwClock, Settings } from "lucide-react"
 import Menu from "../../components/Menu"
+import { useAuth } from "@/context/AuthContext"
 
 const SideBar = () => {
+
+  const { switchRole } = useAuth()
+  
+
   return (
     <div className="flex gap-3 items-start">
       <div className="rounded-4xl bg-gray-100 flex flex-col gap-12 h-full p-8">
@@ -23,6 +28,12 @@ const SideBar = () => {
           <p className="mb-2 text-2xl">Generals</p>
           <Menu title="Setting" icon={<Settings />} to="/settings" />
           <Menu title="Logout" icon={<LogOut />} to="/logout" />
+        </div>
+
+        <div className="flex flex-col gap-12 ">
+          <button className="cursor-pointer" onClick={()=> switchRole("karyawan")}>karyawan</button>
+          <button className="cursor-pointer" onClick={()=> switchRole("leader")}>leader</button>
+
         </div>
       </div>
     </div>

@@ -8,10 +8,11 @@ import OvertimeHistory from "./OvertimeHistory"
 import OvertimeRateCard from "./OvertimeRateCard"
 import  produksiOktober  from "@/data/datadummy_produksi"
 import ProductionCard from "./ProductionCard"
+import { useAuth } from "@/context/AuthContext"
 
 const Dashboard = () => {
 
-
+const { user } = useAuth()
 
   return (
     <div className="flex flex-col h-full gap-4">
@@ -20,10 +21,10 @@ const Dashboard = () => {
         <div className="flex gap-3 items-center">
           <IconInfo icon={User} />
           <div className="flex flex-col">
-            <span className="font-semibold text-gray-900">Muhammad Nur Majid</span>
+            <span className="font-semibold text-gray-900">{user.nama}</span>
             <a href="mailto:muhammadnurmajid160@gmail.com"
               className="text-xs text-gray-500 hover:text-blue-600 hover:underline transition-colors" >
-              muhammadnurmajid160@gmail.com
+              {user.email}
             </a>
           </div>
         </div>

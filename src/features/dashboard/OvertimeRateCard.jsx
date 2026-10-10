@@ -24,7 +24,6 @@ const OvertimeRateCard = () => {
                 <Calendar />
             </div>
 
-            {/* Content Body - DIBUAT PAS DI TENGAH (CENTER) */}
             <div className="flex-1 flex items-center justify-center my-auto py-6">
                 <div className="">
                     {/* Lingkaran Progress */}
