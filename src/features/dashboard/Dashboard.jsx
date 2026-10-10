@@ -3,10 +3,8 @@ import { Bell, MessageCircle, User } from "lucide-react";
 
 import CardStatList from "./CardStatList";
 import HistoryTable from "./HistoryTable";
-import Card from "@/components/Card";
 import OvertimeHistory from "./OvertimeHistory";
 import OvertimeRateCard from "./OvertimeRateCard";
-import produksiOktober from "@/data/datadummy_produksi";
 import ProductionCard from "./ProductionCard";
 import { useAuth } from "@/context/AuthContext";
 import RiwayatCard from "./RiwayatCard";
@@ -55,9 +53,7 @@ const Dashboard = () => {
         {/* OvertimeRateCard */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <OvertimeRateCard />
-          <Card>
-            <ProductionCard data={produksiOktober} />
-          </Card>
+          <ProductionCard />
         </div>
 
         {/* History Section */}

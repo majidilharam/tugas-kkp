@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import LeaveRequestForm from "./modal/LeaveRequestForm";
 import Badge from "@/components/Badge";
@@ -9,36 +7,57 @@ import Modal from "@/components/Modal";
 
 const LeaveRequest = () => {
   const [logLeave, setLogLeave] = useState([]);
-  const [openModalDelete, setOpenModalDelete] = useState(false)
-  const [selectedLeaveId, setSelectedLeaveId] = useState(null)
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [openedFormModal, setOpenedFormModal] = useState(false);
+  const [selectedLeaveId, setSelectedLeaveId] = useState(null);
+
+  const editingLeave = logLeave.find((leave) => leave.id === selectedLeaveId);
+
+  const openFormModal = () => {
+    setSelectedLeaveId(null);
+    setOpenedFormModal(true);
+  };
+
+  const closeFormModal = () => {
+    setOpenedFormModal(false);
+  };
 
   const handleOpenModalDelete = (id) => {
-    setSelectedLeaveId(id)
-    setOpenModalDelete(true)
-    console.log(id)
-    
-  } 
-
+    setSelectedLeaveId(id);
+    setOpenModalDelete(true);
+  };
 
   const handleCloseModal = () => {
-    setOpenModalDelete(false)
-    setSelectedLeaveId(null)
-  }
+    setOpenModalDelete(false);
+    setSelectedLeaveId(null);
+  };
 
   const deleteLog = () => {
-    setLogLeave((prev) => 
-    prev.filter((item) => item.id !== selectedLeaveId)
-    )
-    handleCloseModal()
+    setLogLeave((prev) => prev.filter((item) => item.id !== selectedLeaveId));
+    handleCloseModal();
+  };
 
-  }
-
-
-  
+  const onclickEdit = (id) => {
+    setSelectedLeaveId(id);
+    setOpenedFormModal(true);
+  };
 
   const addOnCuti = (cuti) => {
     setLogLeave((prev) => [...prev, cuti]);
-  }
+  };
+
+  const editLeave = (editingLeave) => {
+    setLogLeave((prev) => {
+      const result = prev.map((leave) => {
+        if (leave.id === selectedLeaveId) {
+          return editingLeave;
+        } else {
+          return leave;
+        }
+      });
+      return result;
+    });
+  };
 
   const headerCuti = [
     "Jenis Cuti",
@@ -46,7 +65,7 @@ const LeaveRequest = () => {
     "Tanggal Mulai",
     "Tanggal Selesai",
     "Status",
-    "Aksi"
+    "Aksi",
   ];
 
   const formatTanggal = (tanggal) => {
@@ -75,20 +94,25 @@ const LeaveRequest = () => {
   };
   return (
     <div className="min-h-screen rounded-3xl bg-slate-50 p-4 sm:p-6 lg:p-8">
-      {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          Pengajuan Cuti
-        </h1>
-
-        <p className="mt-1 text-sm text-slate-500">
-          Kelola dan pantau riwayat pengajuan cuti kamu.
-        </p>
-      </div>
-
       {/* Form Pengajuan */}
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-        <LeaveRequestForm onAdd={addOnCuti} />
+        <div className="flex justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-slate-800">
+              Pengajuan Cuti
+            </h1>
+            <p className="mt-1 text-sm text-slate-500">
+              Kelola dan pantau riwayat pengajuan cuti kamu.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={openFormModal}
+            className="w-fit cursor-pointer bg-[#0081BF] text-white rounded-lg p-3 mt-2 font-semibold text-sm tracking-wide hover:bg-[#00699C] transition-colors shadow-sm"
+          >
+            Ajukan Cuti
+          </button>
+        </div>
       </div>
 
       {/* Tabel Riwayat Cuti */}
@@ -96,9 +120,7 @@ const LeaveRequest = () => {
         {/* Judul Tabel */}
         <div className="flex flex-col gap-1 border-b border-slate-100 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="font-semibold text-slate-800">
-              Riwayat Pengajuan
-            </h2>
+            <h2 className="font-semibold text-slate-800">Riwayat Pengajuan</h2>
 
             <p className="text-sm text-slate-500">
               Daftar pengajuan cuti yang telah dicatat.
@@ -138,9 +160,7 @@ const LeaveRequest = () => {
                     </td>
 
                     <td className="max-w-xs px-5 py-4 text-sm text-slate-600">
-                      <p className="line-clamp-2">
-                        {item.alasanCuti || "-"}
-                      </p>
+                      <p className="line-clamp-2">{item.alasanCuti || "-"}</p>
                     </td>
 
                     <td className="whitespace-nowrap px-5 py-4 text-sm text-slate-600">
@@ -156,11 +176,15 @@ const LeaveRequest = () => {
                         {item.status || "Menunggu"}
                       </Badge>
                     </td>
-                    <div className="flex gap-3 border p-4 ">
-                      <Button onClick={() => handleOpenModalDelete(item.id)} variant="secondary">Hapus</Button>
-                      <Button >Edit</Button>
+                    <div className="flex gap-3 p-4 ">
+                      <Button
+                        onClick={() => handleOpenModalDelete(item.id)}
+                        variant="secondary"
+                      >
+                        Hapus
+                      </Button>
+                      <Button onClick={() => onclickEdit(item.id)}>Edit</Button>
                     </div>
-
                   </tr>
                 ))
               ) : (
@@ -203,15 +227,29 @@ const LeaveRequest = () => {
         </div>
       </div>
 
-      {openModalDelete && <Modal >Apakah data ini mau dihapus
-        <div className="flex gap-3">
-          <Button onClick={handleCloseModal} variant="primary">Batal</Button>
-          <Button onClick={deleteLog}  variant="secondary">Hapus</Button>
-        </div>
-      </Modal>}
-
+      {openModalDelete && (
+        <Modal>
+          Apakah data ini mau dihapus
+          <div className="flex gap-3">
+            <Button onClick={handleCloseModal} variant="primary">
+              Batal
+            </Button>
+            <Button onClick={deleteLog} variant="secondary">
+              Hapus
+            </Button>
+          </div>
+        </Modal>
+      )}
+      {openedFormModal && (
+        <LeaveRequestForm
+          onAdd={addOnCuti}
+          onClose={closeFormModal}
+          defaultValue={editingLeave}
+          onEdit={editLeave}
+        />
+      )}
     </div>
   );
 };
 
-export default LeaveRequest
+export default LeaveRequest;
