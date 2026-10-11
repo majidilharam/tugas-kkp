@@ -7,7 +7,7 @@ import Modal from "@/components/Modal";
 
 const LeaveRequest = () => {
   const [logLeave, setLogLeave] = useState([]);
-  const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [openedModalDelete, setOpenedModalDelete] = useState(false);
   const [openedFormModal, setOpenedFormModal] = useState(false);
   const [selectedLeaveId, setSelectedLeaveId] = useState(null);
 
@@ -24,11 +24,11 @@ const LeaveRequest = () => {
 
   const handleOpenModalDelete = (id) => {
     setSelectedLeaveId(id);
-    setOpenModalDelete(true);
+    setOpenedModalDelete(true);
   };
 
   const handleCloseModal = () => {
-    setOpenModalDelete(false);
+    setOpenedModalDelete(false);
     setSelectedLeaveId(null);
   };
 
@@ -37,7 +37,7 @@ const LeaveRequest = () => {
     handleCloseModal();
   };
 
-  const onclickEdit = (id) => {
+  const onClickEdit = (id) => {
     setSelectedLeaveId(id);
     setOpenedFormModal(true);
   };
@@ -183,7 +183,7 @@ const LeaveRequest = () => {
                       >
                         Hapus
                       </Button>
-                      <Button onClick={() => onclickEdit(item.id)}>Edit</Button>
+                      <Button onClick={() => onClickEdit(item.id)}>Edit</Button>
                     </div>
                   </tr>
                 ))
@@ -227,7 +227,7 @@ const LeaveRequest = () => {
         </div>
       </div>
 
-      {openModalDelete && (
+      {openedModalDelete && (
         <Modal>
           Apakah data ini mau dihapus
           <div className="flex gap-3">
