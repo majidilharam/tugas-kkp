@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 
-const LeaveApplication = ({ openFormModal = () => {} }) => {
+const LeaveApplication = ({ onApplication = () => {} }) => {
   return (
     <Card className="p-4">
       <div className="flex justify-between">
@@ -13,7 +13,7 @@ const LeaveApplication = ({ openFormModal = () => {} }) => {
             Kelola dan pantau riwayat pengajuan cuti kamu.
           </p>
         </div>
-        <Button onClick={openFormModal}>Ajukan Cuti</Button>
+        <Button onClick={onApplication}>Ajukan Cuti</Button>
       </div>
     </Card>
   );

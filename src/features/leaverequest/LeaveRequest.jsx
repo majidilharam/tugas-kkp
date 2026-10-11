@@ -8,35 +8,29 @@ import LeaveApplication from "./LeaveApplication";
 import Card from "@/components/Card";
 
 const LeaveRequest = () => {
-  const [logLeave, setLogLeave] = useState([]);
-  const [openedModalDelete, setOpenedModalDelete] = useState(false);
+  const [leaveList, setLeaveList] = useState([]);
+  const [openedDeleteModal, setOpenedDeleteModal] = useState(false);
   const [openedFormModal, setOpenedFormModal] = useState(false);
   const [selectedLeaveId, setSelectedLeaveId] = useState(null);
 
-  const editingLeave = logLeave.find((leave) => leave.id === selectedLeaveId);
+  const editingLeave = leaveList.find((leave) => leave.id === selectedLeaveId);
 
   const openFormModal = () => {
-    setSelectedLeaveId(null);
     setOpenedFormModal(true);
   };
 
   const closeFormModal = () => {
+    setSelectedLeaveId(null);
     setOpenedFormModal(false);
   };
 
-  const handleOpenModalDelete = (id) => {
-    setSelectedLeaveId(id);
-    setOpenedModalDelete(true);
+  const openDeleteModal = () => {
+    setOpenedDeleteModal(true);
   };
 
-  const handleCloseModal = () => {
-    setOpenedModalDelete(false);
+  const closeDeleteModal = () => {
+    setOpenedDeleteModal(false);
     setSelectedLeaveId(null);
-  };
-
-  const deleteLog = () => {
-    setLogLeave((prev) => prev.filter((item) => item.id !== selectedLeaveId));
-    handleCloseModal();
   };
 
   const onClickEdit = (id) => {
@@ -44,12 +38,22 @@ const LeaveRequest = () => {
     setOpenedFormModal(true);
   };
 
-  const addOnCuti = (cuti) => {
-    setLogLeave((prev) => [...prev, cuti]);
+  const onClickDelete = (id) => {
+    setSelectedLeaveId(id);
+    openDeleteModal();
+  };
+
+  const deleteLeave = () => {
+    setLeaveList((prev) => prev.filter((item) => item.id !== selectedLeaveId));
+    closeDeleteModal();
+  };
+
+  const addLeave = (cuti) => {
+    setLeaveList((prev) => [...prev, cuti]);
   };
 
   const editLeave = (editingLeave) => {
-    setLogLeave((prev) => {
+    setLeaveList((prev) => {
       const result = prev.map((leave) => {
         if (leave.id === selectedLeaveId) {
           return editingLeave;
@@ -98,7 +102,7 @@ const LeaveRequest = () => {
     <div className="min-h-screen rounded-3xl bg-slate-50 p-4 sm:p-6 lg:p-8 ">
       {/* Form Pengajuan */}
       <div className="flex flex-col gap-4">
-        <LeaveApplication openFormModal={openFormModal} />
+        <LeaveApplication onApplication={openFormModal} />
         {/* Tabel Riwayat Cuti */}
         <Card>
           {/* Judul Tabel */}
@@ -112,7 +116,7 @@ const LeaveRequest = () => {
               </p>
             </div>
             <span className="mt-2 w-fit rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 sm:mt-0">
-              {logLeave.length} Pengajuan
+              {leaveList.length} Pengajuan
             </span>
           </div>
 
@@ -133,8 +137,8 @@ const LeaveRequest = () => {
               </thead>
 
               <tbody className="divide-y divide-slate-100">
-                {logLeave.length > 0 ? (
-                  logLeave.map((item, index) => (
+                {leaveList.length > 0 ? (
+                  leaveList.map((item, index) => (
                     <tr
                       key={index}
                       className="transition-colors hover:bg-slate-50"
@@ -162,7 +166,7 @@ const LeaveRequest = () => {
                       </td>
                       <div className="flex gap-3 p-4 ">
                         <Button
-                          onClick={() => handleOpenModalDelete(item.id)}
+                          onClick={() => onClickDelete(item.id)}
                           variant="secondary"
                         >
                           Hapus
@@ -208,17 +212,20 @@ const LeaveRequest = () => {
           {/* Footer */}
           <div className="border-t border-slate-100 bg-slate-50/70 px-5 py-3">
             <p className="text-xs text-slate-500">
-              Menampilkan {logLeave.length} data pengajuan cuti
+              Menampilkan {leaveList.length} data pengajuan cuti
             </p>
           </div>
         </Card>
 
-        {openedModalDelete && (
-          <LeaveRequestDelete onCloce={handleCloseModal} onDelete={deleteLog} />
+        {openedDeleteModal && (
+          <LeaveRequestDelete
+            onCloce={closeDeleteModal}
+            onDelete={deleteLeave}
+          />
         )}
         {openedFormModal && (
           <LeaveRequestForm
-            onAdd={addOnCuti}
+            onAdd={addLeave}
             onClose={closeFormModal}
             defaultValue={editingLeave}
             onEdit={editLeave}
