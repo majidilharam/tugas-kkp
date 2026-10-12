@@ -1,11 +1,10 @@
 import { useState } from "react";
 import LeaveRequestForm from "./modal/LeaveRequestForm";
-import Badge from "@/components/Badge";
-import { CalendarDays } from "lucide-react";
-import Button from "@/components/Button";
 import LeaveRequestDelete from "./modal/LeaveRequestDelete";
 import LeaveApplication from "./LeaveApplication";
 import Card from "@/components/Card";
+import LeaveRequestTable from "./LeaveRequestTable";
+import Badge from "@/components/Badge";
 
 const LeaveRequest = () => {
   const [leaveList, setLeaveList] = useState([]);
@@ -65,39 +64,10 @@ const LeaveRequest = () => {
     });
   };
 
-  const headerCuti = [
-    "Jenis Cuti",
-    "Alasan Cuti",
-    "Tanggal Mulai",
-    "Tanggal Selesai",
-    "Status",
-    "Aksi",
-  ];
-
-  const formatTanggal = (tanggal) => {
-    if (!tanggal) return "-";
-
-    const date = new Date(tanggal);
-
-    if (Number.isNaN(date.getTime())) return "-";
-
-    return date.toLocaleDateString("id-ID", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
+  const statusColors = {
+    onApplication: "blue",
   };
 
-  const getStatusColor = (status) => {
-    switch (status?.toLowerCase()) {
-      case "disetujui":
-        return "green";
-      case "ditolak":
-        return "red";
-      default:
-        return "yellow";
-    }
-  };
   return (
     <div className="min-h-screen rounded-3xl bg-slate-50 p-4 sm:p-6 lg:p-8 ">
       {/* Form Pengajuan */}
@@ -115,99 +85,16 @@ const LeaveRequest = () => {
                 Daftar pengajuan cuti yang telah dicatat.
               </p>
             </div>
-            <span className="mt-2 w-fit rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 sm:mt-0">
-              {leaveList.length} Pengajuan
-            </span>
+            <Badge color={statusColors["onApplication"]}>
+              <span>{leaveList.length} Pengajuan</span>
+            </Badge>
           </div>
-
           {/* Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left">
-              <thead className="bg-slate-800 text-white">
-                <tr>
-                  {headerCuti.map((label) => (
-                    <th
-                      key={label}
-                      className="px-5 py-4 text-xs font-semibold uppercase tracking-wider"
-                    >
-                      {label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-
-              <tbody className="divide-y divide-slate-100">
-                {leaveList.length > 0 ? (
-                  leaveList.map((item, index) => (
-                    <tr
-                      key={index}
-                      className="transition-colors hover:bg-slate-50"
-                    >
-                      <td className="whitespace-nowrap px-5 py-4 text-sm font-semibold text-slate-800">
-                        {item.jenisCuti || "-"}
-                      </td>
-
-                      <td className="max-w-xs px-5 py-4 text-sm text-slate-600">
-                        <p className="line-clamp-2">{item.alasanCuti || "-"}</p>
-                      </td>
-
-                      <td className="whitespace-nowrap px-5 py-4 text-sm text-slate-600">
-                        {formatTanggal(item.tanggalMulai)}
-                      </td>
-
-                      <td className="whitespace-nowrap px-5 py-4 text-sm text-slate-600">
-                        {formatTanggal(item.tanggalSelesai)}
-                      </td>
-
-                      <td className="whitespace-nowrap px-5 py-4">
-                        <Badge color={getStatusColor(item.status)}>
-                          {item.status || "Menunggu"}
-                        </Badge>
-                      </td>
-                      <div className="flex gap-3 p-4 ">
-                        <Button
-                          onClick={() => onClickDelete(item.id)}
-                          variant="secondary"
-                        >
-                          Hapus
-                        </Button>
-                        <Button onClick={() => onClickEdit(item.id)}>
-                          Edit
-                        </Button>
-                      </div>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td
-                      colSpan={headerCuti.length}
-                      className="px-5 py-16 text-center"
-                    >
-                      <div className="flex flex-col items-center">
-                        <div className="flex flex-col items-center">
-                          <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100">
-                            <CalendarDays
-                              size={24}
-                              strokeWidth={1.5}
-                              className="text-slate-400"
-                            />
-                          </div>
-                        </div>
-
-                        <p className="font-semibold text-slate-700">
-                          Belum ada pengajuan cuti
-                        </p>
-
-                        <p className="mt-1 text-sm text-slate-400">
-                          Pengajuan cuti kamu akan muncul di sini.
-                        </p>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+          <LeaveRequestTable
+            leaveList={leaveList}
+            onEdit={onClickEdit}
+            onDelete={onClickDelete}
+          />
 
           {/* Footer */}
           <div className="border-t border-slate-100 bg-slate-50/70 px-5 py-3">
