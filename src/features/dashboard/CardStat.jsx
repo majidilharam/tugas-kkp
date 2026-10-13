@@ -1,31 +1,20 @@
-const CardStat = ({
-  label = "",
-  value = "",
-  unit = "",
-  icon: Icon,
-  className = "",
-}) => {
+import Card from "@/components/Card";
+
+const CardStat = ({ title = "", value = "", icon: Icon }) => {
   return (
-    <div
-      className={`bg-old-blue text-white p-6 rounded-2xl shadow-lg w-full ${className}`}
-    >
+    <Card className="p-6">
       <div>
         <div className="flex gap-4">
-          <Icon className="p-1 rounded-lg bg-old-blue-light w-10 h-10 " />
+          <Icon className="p-1 rounded- w-10 h-10 " />
           <div className="flex flex-col gap-4">
-            <span className="text-white text-lg font-medium">{label}</span>
+            <span className=" text-lg font-medium">{title}</span>
             <div className=" flex items-center gap-2">
-              <span className="text-5xl font-extrabold tracking-tight">
-                {value}
-              </span>
-              <span className="text-xl font-medium text-blue-100 ">{unit}</span>
+              <span className="text-3xl font-bold tracking-tight">{value}</span>
             </div>
           </div>
         </div>
       </div>
-
-      <div></div>
-    </div>
+    </Card>
   );
 };
 

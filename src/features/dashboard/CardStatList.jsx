@@ -10,30 +10,27 @@ import CardStat from "./CardStat";
 
 const CardStatData = [
   {
-    label: "Cuti Tahunan",
-    value: 8,
-    unit: "/ 8 hari",
+    title: "Sisa Cuti Tahunan",
+    value: "8 Hari",
     icon: Calendar,
   },
   {
-    label: "Cuti Besar",
-    value: 12,
-    unit: "/ 12 hari",
+    title: "Sisa Cuti Besar",
+    value: "12 hari",
     icon: Calendar1,
   },
   {
-    label: "Jam Lembur",
-    value: jamLembur,
-    unit: "Jam",
+    title: "Jam Lembur",
+    value: `${jamLembur} Jam`,
     icon: CalendarClock,
   },
   {
-    label: "Cuti Pending",
+    title: "Cuti Pending",
     value: 0,
     icon: RotateCcwClock,
   },
   {
-    label: "Lembur Pending",
+    title: "Lembur Pending",
     value: 0,
     icon: RotateCcwSquare,
   },

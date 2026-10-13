@@ -1,5 +1,4 @@
 import {
-  GalleryVertical,
   LayoutDashboard,
   LogOut,
   NotebookPen,
@@ -37,11 +36,6 @@ const SideBar = () => {
             title="Overtime History"
             icon={<RotateCcwClock />}
             to="/overtime"
-          />
-          <Menu
-            title="Report Matrial"
-            icon={<GalleryVertical />}
-            to="/report-matrial"
           />
         </div>
 
