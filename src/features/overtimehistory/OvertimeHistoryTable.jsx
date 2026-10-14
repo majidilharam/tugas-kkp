@@ -1,6 +1,8 @@
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
+import EmptyState from "@/components/EmptyState";
 import Table from "@/components/Table";
+import { CalendarDays } from "lucide-react";
 
 const OvertimeHistoryTable = ({ listHistory, onDelete = () => {} }) => {
   const statusColors = {
@@ -45,7 +47,20 @@ const OvertimeHistoryTable = ({ listHistory, onDelete = () => {} }) => {
     },
   ];
 
-  return <Table columns={columns} data={listHistory} />;
+  return (
+    <Table
+      columns={columns}
+      data={listHistory}
+      emptyState={
+        <EmptyState
+          col={columns.length}
+          icon={CalendarDays}
+          title="Belum ada pengajuan lembur"
+          desc="Riwayat lembur kamu akan muncul disini"
+        />
+      }
+    />
+  );
 };
 
 export default OvertimeHistoryTable;

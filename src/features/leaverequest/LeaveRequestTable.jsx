@@ -1,5 +1,6 @@
 import Badge from "@/components/Badge";
 import Button from "@/components/Button";
+import EmptyState from "@/components/EmptyState";
 import Table from "@/components/Table";
 import { CalendarDays } from "lucide-react";
 
@@ -74,27 +75,12 @@ const LeaveRequestTable = ({ onEdit, onDelete, leaveList }) => {
       columns={columns}
       data={leaveList}
       emptyState={
-        <tr>
-          <td className="px-5 py-16" colSpan={columns.length}>
-            <div className="flex flex-col items-center">
-              <div className="flex flex-col items-center">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100">
-                  <CalendarDays
-                    size={24}
-                    strokeWidth={1.5}
-                    className="text-slate-400"
-                  />
-                </div>
-              </div>
-              <p className="font-semibold text-slate-700">
-                Belum ada pengajuan cuti
-              </p>
-              <p className="mt-1 text-sm text-slate-400">
-                Pengajuan cuti kamu akan muncul di sini.
-              </p>
-            </div>
-          </td>
-        </tr>
+        <EmptyState
+          col={columns.length}
+          icon={CalendarDays}
+          title="Belum ada pengajuan cuti"
+          desc="Pengajuan cuti kamu akan muncul disini"
+        />
       }
     />
   );
