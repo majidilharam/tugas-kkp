@@ -2,13 +2,13 @@ import Card from "@/components/Card";
 import OvertimeHistoryHeader from "./OvertimeHistoryHeader";
 import OvertimeHistoryTable from "./OvertimeHistoryTable";
 import Badge from "@/components/Badge";
-import { listHistory } from "@/data/dataDummy_overtime";
+import { overtimeHistory } from "@/data/dataDummy_overtime";
 import { useState } from "react";
 import OvertimeHistoryDelete from "./modal/OvertimeHistoryDelete";
 
 const OvertimeHistory = () => {
   const [openedDeleteModal, setOpenedDeleteModal] = useState(false);
-  const [history, setHistory] = useState(listHistory);
+  const [history, setHistory] = useState(overtimeHistory);
   const [selectedHistory, setSelectedHistory] = useState(null);
 
   const openDeleteModal = (item) => {
@@ -26,10 +26,6 @@ const OvertimeHistory = () => {
     closeDeleteModal();
   };
 
-  const statusColors = {
-    onApplication: "blue",
-  };
-
   return (
     <div className="min-h-screen rounded-3xl bg-slate-50 p-4 sm:p-6 lg:p-8 ">
       <div className="flex flex-col gap-4">
@@ -42,7 +38,7 @@ const OvertimeHistory = () => {
                 Daftar lembur yang telah dicatat.
               </p>
             </div>
-            <Badge color={statusColors["onApplication"]}>
+            <Badge color="blue">
               <span>{history.length} Pengajuan</span>
             </Badge>
           </div>

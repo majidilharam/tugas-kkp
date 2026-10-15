@@ -1,4 +1,4 @@
-import { jamLembur, maxLembur, presentaseLembur } from "@/utils/lembur";
+import { maxOvertime, overtimeHours, presentaseLembur } from "@/utils/lembur";
 import Calendar from "@/components/Calendar";
 import Badge from "@/components/Badge";
 import Card from "@/components/Card";
@@ -10,10 +10,10 @@ const OvertimeRateCard = () => {
   const strokeDashoffset =
     circumference - (cappedPercentage / 100) * circumference;
 
-  const sisaLembur = jamLembur >= maxLembur;
-  const statusLembur = sisaLembur ? "Jam lembur sudah habis" : "Aman";
-  const badgeColor = sisaLembur ? "red" : "green";
-  const hasilLembur = maxLembur - jamLembur;
+  const isOvertimeExceeded = overtimeHours >= maxOvertime;
+  const overtimeStatus = isOvertimeExceeded ? "Jam lembur sudah habis" : "Aman";
+  const badgeColor = isOvertimeExceeded ? "red" : "green";
+  const remainingOvertime = maxOvertime - overtimeHours;
 
   return (
     <Card className="flex flex-col justify-between h-full px-10 py-8">
@@ -24,7 +24,7 @@ const OvertimeRateCard = () => {
             Presentase Lembur Bulanan
           </h3>
           <p className="text-xs text-gray-400">
-            Dihitung dari batas maksimal {maxLembur} jam / bulan
+            Dihitung dari batas maksimal {maxOvertime} jam / bulan
           </p>
         </div>
         <Calendar />
@@ -51,7 +51,7 @@ const OvertimeRateCard = () => {
                 cx="50"
                 cy="50"
                 r={radius}
-                className={`${sisaLembur ? "text-red-500" : "text-blue-600"} transition-all duration-700 ease-out`}
+                className={`${isOvertimeExceeded ? "text-red-500" : "text-blue-600"} transition-all duration-700 ease-out`}
                 strokeWidth="10"
                 strokeDasharray={circumference}
                 strokeDashoffset={strokeDashoffset}
@@ -75,7 +75,7 @@ const OvertimeRateCard = () => {
                 Total Jam Terpakai
               </span>
               <span className="text-2xl font-bold text-gray-900 mt-0.5">
-                {jamLembur} / {maxLembur} Jam
+                {overtimeHours} / {maxOvertime} Jam
               </span>
             </div>
             <div className="flex flex-col items-center">
@@ -84,8 +84,8 @@ const OvertimeRateCard = () => {
               </span>
               <Badge color={badgeColor}>
                 <span>
-                  {hasilLembur > 0
-                    ? `${hasilLembur} Jam tersisa`
+                  {remainingOvertime > 0
+                    ? `${remainingOvertime} Jam tersisa`
                     : "0 Jam tersisa"}
                 </span>
               </Badge>
@@ -99,9 +99,7 @@ const OvertimeRateCard = () => {
       {/* Footer Status */}
       <div className="border-t border-gray-100 pt-3 flex justify-between items-center text-xs text-gray-400">
         <span>Status Kuota</span>
-        <Badge color={badgeColor}>
-          <span className={`statusLembur ${sisaLembur}`}>{statusLembur}</span>
-        </Badge>
+        <Badge color={badgeColor}>{overtimeStatus}</Badge>
       </div>
     </Card>
   );

@@ -1,16 +1,11 @@
+import LeaveRequest from "@/features/leave-request/LeaveRequest";
 
-import LeaveRequest from "@/features/leaverequest/LeaveRequest"
-
-const LeaveRequestPage  = () => {
-
-
-
+const LeaveRequestPage = () => {
   return (
     <>
-    <LeaveRequest/>
-   
+      <LeaveRequest />
     </>
-  )
-}
+  );
+};
 
-export default LeaveRequestPage
+export default LeaveRequestPage;

@@ -1,32 +1,32 @@
-export const listHistory = [
+export const overtimeHistory = [
   {
     alasanLembur: "mengerjakan remain",
-    jamMulai: "17.00",
-    jamSelesai: "21.45",
+    startTime: "17.00",
+    endTime: "21.45",
     status: "disetujui",
   },
   {
     alasanLembur: "mengerjakan remain",
-    jamMulai: "17.00",
-    jamSelesai: "21.45",
+    startTime: "17.00",
+    endTime: "21.45",
     status: "ditolak",
   },
   {
     alasanLembur: "mengerjakan remain",
-    jamMulai: "17.00",
-    jamSelesai: "21.45",
+    startTime: "17.00",
+    endTime: "21.45",
     status: "ditolak",
   },
   {
     alasanLembur: "mengerjakan remain",
-    jamMulai: "17.00",
-    jamSelesai: "21.45",
+    startTime: "17.00",
+    endTime: "21.45",
     status: "disetujui",
   },
   {
     alasanLembur: "mengerjakan remain",
-    jamMulai: "17.00",
-    jamSelesai: "21.45",
+    startTime: "17.00",
+    endTime: "21.45",
     status: "disetujui",
   },
 ];

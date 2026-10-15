@@ -19,20 +19,18 @@ const OvertimeHistoryTable = ({ listHistory, onDelete = () => {} }) => {
     },
     {
       header: "Jam Mulai",
-      key: "jamMulai",
+      key: "startTime",
       cell: (value) => value,
     },
     {
       header: "Jam Selesai",
-      key: "jamSelesai",
+      key: "endTime",
       cell: (value) => value,
     },
     {
       header: "Status",
       key: "status",
-      cell: (value) => (
-        <Badge color={statusColors[value?.toLowerCase()]}>{value}</Badge>
-      ),
+      cell: (value) => <Badge color={statusColors[value]}>{value}</Badge>,
     },
     {
       key: "aksi",

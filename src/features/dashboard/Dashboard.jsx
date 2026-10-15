@@ -1,13 +1,13 @@
 import IconInfo from "@/components/IconInfo";
 import { Bell, MessageCircle, User } from "lucide-react";
 
-import CardStatList from "./CardStatList";
 import HistoryTable from "./HistoryTable";
 import OvertimeHistory from "./OvertimeHistory";
 import OvertimeRateCard from "./OvertimeRateCard";
 import ProductionCard from "./ProductionCard";
 import { useAuth } from "@/context/AuthContext";
-import RiwayatCard from "./RiwayatCard";
+import StatOverview from "./StatOverview";
+import CardHistory from "./CardHistory";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -48,22 +48,20 @@ const Dashboard = () => {
         </div>
 
         {/* Card Stats Component */}
-        <CardStatList />
+        <StatOverview />
 
         {/* OvertimeRateCard */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <OvertimeRateCard />
           <ProductionCard />
-        </div>
 
-        {/* History Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <RiwayatCard title="Riwayat Cuti Terbaru">
+          {/* History Section */}
+          <CardHistory title="Riwayat Cuti Terbaru">
             <HistoryTable />
-          </RiwayatCard>
-          <RiwayatCard title="Riwayat Lembur Terbaru">
+          </CardHistory>
+          <CardHistory title="Riwayat Lembur Terbaru">
             <OvertimeHistory />
-          </RiwayatCard>
+          </CardHistory>
         </div>
       </div>
     </div>

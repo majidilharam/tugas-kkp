@@ -1,7 +1,7 @@
 import Card from "@/components/Card";
-import produksiOktober from "@/data/datadummy_produksi";
+import ProductionOktober from "@/data/datadummy_produksi";
 
-const data = produksiOktober;
+const data = ProductionOktober;
 
 const ProductionCard = () => {
   const totalBulan = data.line.reduce((total, l) => total + l.plan, 0);
@@ -16,14 +16,14 @@ const ProductionCard = () => {
 
       {/* Ringkasan Target */}
       <div className="mb-5 flex gap-3">
-        <div className="flex-1 rounded-lg bg-slate-50 p-3">
+        <div className="flex-1 border rounded-lg bg-slate-50 p-3">
           <p className="text-xs text-slate-500">Target Bulan Ini</p>
           <p className="text-xl font-semibold text-gray-900">
             {Math.round(totalBulan).toLocaleString()}
           </p>
         </div>
 
-        <div className="flex-1 rounded-lg bg-slate-50 p-3">
+        <div className="flex-1 border rounded-lg bg-slate-50 p-3">
           <p className="text-xs text-slate-500">Target Harian Bulan Ini</p>
           <p className="text-xl font-semibold text-gray-900">
             {Math.round(totalHarian).toLocaleString()}
