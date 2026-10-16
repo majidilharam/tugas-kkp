@@ -1,4 +1,4 @@
- const prductionOktober = {
+ const productionOktober = {
     bulan: "Oktober",
     hariKerja: 22, 
     updatedAt: "04 Oktober 2026, 08:00",
@@ -13,4 +13,4 @@
 
 }
 
-export default prductionOktober
+export default productionOktober

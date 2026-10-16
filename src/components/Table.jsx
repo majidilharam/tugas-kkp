@@ -1,7 +1,14 @@
-const Table = ({ columns = [], data = [], emptyState = null }) => {
+import cn from "@/utils/cn";
+
+const Table = ({
+  columns = [],
+  data = [],
+  emptyState = null,
+  className = "",
+}) => {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-left">
+      <table className={cn("w-full border-collapse  text-left", className)}>
         <thead className="bg-slate-800 text-white">
           <tr>
             {columns.map(({ header }) => (
