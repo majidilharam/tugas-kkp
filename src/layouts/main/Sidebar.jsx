@@ -37,6 +37,11 @@ const SideBar = () => {
             icon={<RotateCcwClock />}
             to="/overtime"
           />
+          <Menu
+            title="leader dashboard"
+            icon={<RotateCcwClock />}
+            to="/dashboard-leader"
+          />
         </div>
 
         <div className="flex flex-col gap-4">

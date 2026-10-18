@@ -6,6 +6,7 @@ import Layout from "./layouts/main";
 import OvertimeHistoryPage from "./pages/overtimehistory/OvertimeHistoryPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
 import { AuthProvider } from "./context/AuthContext";
+import LeaderDashboard from "./pages/LeaderDashboard";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/leave-request" element={<LeaveRequestPage />} />
             <Route path="/overtime" element={<OvertimeHistoryPage />} />
+            <Route path="/dashboard-leader" element={<LeaderDashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>
